@@ -54,7 +54,7 @@ public class RemoteEJBClient {
 		// the whole package name.
 
 		// let's do the lookup
-		return (HelloWorld) context.lookup("ejb:/ejb-remote-server-side/HelloWorldBean!" + HelloWorld.class.getName());
+		return (HelloWorld) context.lookup("ejb:/wildfly-ejb-remote-server-side/HelloWorldBean!" + HelloWorld.class.getName());
 	}
 
  

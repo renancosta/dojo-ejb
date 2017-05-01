@@ -1,6 +1,8 @@
 # Maven #
 ########
 /target/
+/client/target/
+/server-side/target/
 
 # Eclipse Files #
 #################
