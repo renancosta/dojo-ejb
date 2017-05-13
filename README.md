@@ -24,7 +24,7 @@ Construir e implantar o projeto
             mvn exec:exec
 
 
-Configurar o servidor:
+Configurar o servidor para executar remoto:
 --------------------
 1. Adicionar o usuario do arquivo ``client/src/main/resources/jboss-ejb-client.properties`` no servidor wildfly com o comando: ``<PASTA DE INSTALACAO WILDFLY>/bin/add-user.sh -a -u nome_usuario -p senha``
 
