@@ -21,7 +21,8 @@ public class RemoteEJBClient {
     private static void invokeHelloWorld() throws NamingException {
         final HelloWorld hw = lookupRemoteHelloWorld();
         System.out.println("############## Executando HELLO !!!");
-        hw.hello("jader");
+        System.out.println(hw.hello("jader"));
+        System.out.println(hw.historico());  
     }
       
 	private static HelloWorld lookupRemoteHelloWorld() throws NamingException {

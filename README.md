@@ -11,7 +11,7 @@ Construir e implantar o projeto
 -------------------------
 
 1. Iniciar o servidor WildFly.
-2. Abrir um prompt de comando na pasta do-ejb
+2. Abrir um prompt de comando na pasta dojo-ejb
 3. Construir e instalar a cama servidor:
 
             cd server-side
