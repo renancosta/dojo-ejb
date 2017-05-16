@@ -6,9 +6,11 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.ejb.Remote;
-import javax.ejb.Schedule;
-import javax.ejb.Singleton;
 import javax.ejb.Stateless;
+
+import org.jcb.dojo.ejb.framework.Nodo;
+import org.jcb.dojo.ejb.framework.Valor;
+import org.jcb.dojo.ejb.parser.ParserExpressao;
 
 @Stateless
 @Remote(HelloWorld.class)
@@ -23,7 +25,10 @@ List<String> nomes;
 	}
 	public String hello(String nome){
 		nomes.add(nome);
-		return "Alo "+ nome;
+		Nodo resultado = new Valor(0);
+		resultado = ParserExpressao.parser(nome);
+		System.out.println("Calculando expressão: " + nome);
+		return "Resultado "+ resultado.calcula();
 	}
 	
 	public List<String> historico(){
