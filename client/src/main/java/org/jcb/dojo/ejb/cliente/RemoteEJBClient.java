@@ -70,7 +70,7 @@ public class RemoteEJBClient {
 
 		// let's do the lookup
 		return (HelloWorld) context
-				.lookup("ejb:/wildfly-ejb-remote-server-side/HelloWorldBean!" + HelloWorld.class.getName());
+				.lookup("ejb:/server-side/HelloWorldBean!" + HelloWorld.class.getName());
 	}
 
 	private static StatefulHelloWorld lookupRemoteStatefulHelloWorld() throws NamingException {
