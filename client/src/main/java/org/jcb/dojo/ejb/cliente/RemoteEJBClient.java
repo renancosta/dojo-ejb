@@ -2,6 +2,7 @@
 package org.jcb.dojo.ejb.cliente;
 
 import java.util.Hashtable;
+import java.util.Scanner;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -13,7 +14,7 @@ import org.jcb.dojo.ejb.server.StatefulHelloWorld;
 public class RemoteEJBClient {
 
 	public static void main(String[] args) throws Exception {
-		System.out.println("###########################\nexecutando remoto");
+		System.out.println("###########################\nCalculadora com EJB");
 
 		invokeHelloWorld();
 		//invokeStatefulHelloWorld();
@@ -21,17 +22,22 @@ public class RemoteEJBClient {
 
 	private static void invokeHelloWorld() throws NamingException {
 		final HelloWorld hw = lookupRemoteHelloWorld();
-		System.out.println("############## Executando HELLO !!!");
-		System.out.println(hw.hello("jader"));
+		System.out.println("############## Executando Calculadora !!!");
+		String expressao = "";
+		Scanner input = new Scanner(System.in);
+		System.out.println("Informe uma expressão: ");
+		expressao = input.next();
+		System.out.println(hw.hello(expressao));
+		System.out.println("Lista de expressões");
 		System.out.println(hw.historico());
 	}
 	
-	private static void invokeStatefulHelloWorld() throws NamingException {
-		final StatefulHelloWorld hw = lookupRemoteStatefulHelloWorld();
-		System.out.println("############## Executando HELLO Stateful!!!");
-		System.out.println(hw.hello("jader"));
-		System.out.println(hw.historico());
-	}
+//	private static void invokeStatefulHelloWorld() throws NamingException {
+//		final StatefulHelloWorld hw = lookupRemoteStatefulHelloWorld();
+//		System.out.println("############## Executando HELLO Stateful!!!");
+//		System.out.println(hw.hello("jader"));
+//		System.out.println(hw.historico());
+//	}
 
 	private static HelloWorld lookupRemoteHelloWorld() throws NamingException {
 		final Hashtable<String, String> jndiProperties = new Hashtable<>();
