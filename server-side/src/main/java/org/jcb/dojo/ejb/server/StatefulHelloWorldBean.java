@@ -13,6 +13,10 @@ import javax.ejb.Singleton;
 import javax.ejb.Stateful;
 import javax.ejb.Stateless;
 
+import org.jcb.dojo.ejb.framework.Nodo;
+import org.jcb.dojo.ejb.framework.Valor;
+import org.jcb.dojo.ejb.parser.ParserExpressao;
+
 @Stateful
 @Remote(StatefulHelloWorld.class)
 public class StatefulHelloWorldBean implements StatefulHelloWorld {
@@ -24,9 +28,13 @@ List<String> nomes;
 		System.out.println("Inicia Stateful com @PostConstruct");
 		nomes = new ArrayList<>();
 	}
+	
 	public String hello(String nome){
 		nomes.add(nome);
-		return "Alo "+ nome;
+		Nodo resultado = new Valor(0);
+		resultado = ParserExpressao.parserExpressao(nome);
+		System.out.println("Calculando expressão: " + nome);
+		return "Resultado "+ resultado.calcula();
 	}
 	
 	public List<String> historico(){
