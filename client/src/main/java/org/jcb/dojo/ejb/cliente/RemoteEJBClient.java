@@ -17,7 +17,7 @@ public class RemoteEJBClient {
 		System.out.println("###########################\nCalculadora com EJB");
 
 		invokeHelloWorld();
-		//invokeStatefulHelloWorld();
+		invokeStatefulHelloWorld();
 	}
 
 	private static void invokeHelloWorld() throws NamingException {
@@ -32,12 +32,17 @@ public class RemoteEJBClient {
 		System.out.println(hw.historico());
 	}
 	
-//	private static void invokeStatefulHelloWorld() throws NamingException {
-//		final StatefulHelloWorld hw = lookupRemoteStatefulHelloWorld();
-//		System.out.println("############## Executando HELLO Stateful!!!");
-//		System.out.println(hw.hello("jader"));
-//		System.out.println(hw.historico());
-//	}
+	private static void invokeStatefulHelloWorld() throws NamingException {
+		final StatefulHelloWorld hw = lookupRemoteStatefulHelloWorld();
+		System.out.println("############## Executando Calculadora com Precedência!!!");
+		String expressao = "";
+		Scanner input = new Scanner(System.in);
+		System.out.println("Informe uma expressão: ");
+		expressao = input.next();
+		System.out.println(hw.hello(expressao));
+		System.out.println("Lista de expressões");
+		System.out.println(hw.historico());
+	}
 
 	private static HelloWorld lookupRemoteHelloWorld() throws NamingException {
 		final Hashtable<String, String> jndiProperties = new Hashtable<>();
@@ -70,7 +75,7 @@ public class RemoteEJBClient {
 
 		// let's do the lookup
 		return (HelloWorld) context
-				.lookup("ejb:/server-side/HelloWorldBean!" + HelloWorld.class.getName());
+				.lookup("ejb:/wildfly-ejb-remote-server-side/HelloWorldBean!" + HelloWorld.class.getName());
 	}
 
 	private static StatefulHelloWorld lookupRemoteStatefulHelloWorld() throws NamingException {
