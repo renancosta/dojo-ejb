@@ -171,8 +171,10 @@ public class ParserExpressao {
 			break;
 		case DIVISAO:
 			resultadoOperacao = new Divisao(num1, num2);
+			break;
 		case EXPONENCIACAO:
 			resultadoOperacao = new Exponenciacao(num1, num2);
+			break;
 		}
 
 		return resultadoOperacao;
